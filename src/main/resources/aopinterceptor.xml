@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+        
+	    <context:component-scan base-package="com.Lpan.SaopTest.aop1.service"/>
+	    <bean id="payintecptor" class="com.Lpan.SaopTest.aop1.controller.PayIntecptor"></bean>
+	    <aop:config expose-proxy="true">
+	    	<aop:pointcut expression="execution(* com.Lpan.SaopTest.aop1.service.*.*(..))" id="p1"/>
+	    	<aop:advisor advice-ref="payintecptor" pointcut-ref="p1"/>
+	    </aop:config>
+    
+   <!--  <bean id="payServiceImp" class="com.Lpan.SaopTest.aop1.service.Impl.PayServiceImpl" />  
+   		 <bean id="payInterceptor" class="com.Lpan.SaopTest.aop1.controller.PayIntecptor" /> 
+         <bean id="payService"  class="org.springframework.aop.framework.ProxyFactoryBean"> 
+      	代理接口  
+        <property name="proxyInterfaces">  
+            <value>com.Lpan.SaopTest.*.service.*</value>  
+        </property>
+     	  目标实现类  
+        <property name="target">  
+            <ref local="payServiceImp" />
+      </property>  
+        	拦截器  
+        <property name="interceptorNames"> 
+            <list>  
+                <value>payInterceptor</value>  
+            </list>  
+        </property>  
+    </bean>   -->
+  
+</beans>
