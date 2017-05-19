@@ -14,7 +14,7 @@
 	    <context:component-scan base-package="com.Lpan.SaopTest.aop1.service"/>
 	    <bean id="payintecptor" class="com.Lpan.SaopTest.aop1.controller.PayIntecptor"></bean>
 	    <aop:config expose-proxy="true">
-	    	<aop:pointcut expression="execution(* com.Lpan.SaopTest.aop1.service.*.*(..))" id="p1"/>
+	    	<aop:pointcut expression="execution(* com.Lpan.SaopTest.*.service.*.*(..))" id="p1"/>
 	    	<aop:advisor advice-ref="payintecptor" pointcut-ref="p1"/>
 	    </aop:config>
     
