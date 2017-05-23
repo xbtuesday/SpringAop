@@ -7,7 +7,7 @@ import com.Lpan.SaopTest.Utils.MathInt;
 
 public class Test2 {
 	public static void main(String[] args) throws Exception{
-		ApplicationContext ac = new ClassPathXmlApplicationContext("aop2.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext("/spring/aop2.xml");
 		MathInt mathInt = ac.getBean("mathint",MathInt.class);
 		int a = 2;
 		int b = 0;

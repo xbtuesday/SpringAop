@@ -21,44 +21,12 @@
       http://www.springframework.org/schema/util 
       http://www.springframework.org/schema/util/spring-util-3.0.xsd">
       
-      <context:property-placeholder location="classpath:properties/dev.properties" ignore-unresolvable="true" />
-      
-      <import resource="classpath*:spring/aopinterceptor.xml"/>
-      <!-- redis连接池 配置-->
-      <bean id="redispoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-      	<property name="maxIdle" value="${redis.maxIdle}" />  
-        <property name="maxActive" value="${redis.maxActive}" />  
-        <property name="maxWait" value="${redis.maxWait}" />  
-        <property name="testOnBorrow" value="${redis.testOnBorrow}" /> 
-      </bean>
-      <!-- redis链接工厂 -->
-      <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" destroy-method="destroy">  
-        <property name="poolConfig" ref="redispoolConfig"></property>  
-        <property name="hostName" value="${redis.host}"></property>  
-        <property name="port" value="${redis.port}"></property>  
-        <property name="timeout" value="${redis.timeout}"></property>  
-        <property name="password" value="${redis.password}"></property>  
-	  </bean>
-      
-      <!-- redis 链接池 -->
-      <bean id="redisconnectpool" class="redis.clients.jedis.JedisPool">
-      	<constructor-arg index="0" ref="redispoolConfig" />
-		<constructor-arg index="1" value="${redis.host}" type="java.lang.String"/>
-		<constructor-arg index="2" value="${redis.port}" type="int" />
-      </bean>
-      <bean id="redisTemplete" class="org.springframework.data.redis.core.RedisTemplate">
-      	<property name="connectionFactory" ref="jedisConnectionFactory"/>
-      	<!-- redis 键和值的序列化 -->
-      	 <property name="keySerializer">  
-            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>  
-        </property>  
-        <property name="valueSerializer">  
-            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>  
-        </property> 
-      </bean> 
+       	<!-- 激活@Controller模式 -->
+      	<mvc:annotation-driven />
+ 
      
-      
-      
+	    <!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 需要更改 -->
+	    <context:component-scan base-package="com.Lpan.springTest.*" />
       
       
 </beans>
