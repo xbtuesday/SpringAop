@@ -10,10 +10,12 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.Lpan.SaopTest.payCenter.model.HttpRequestModel;
@@ -66,6 +68,27 @@ public class HttpClientUtils {
 			e.printStackTrace();
 		}
 		return requestbase;
+	}
+	
+	
+	/**
+	 * 
+	* @Title: createHttpClient
+	* @Description: TODO(创建httpclient)
+	* @param @param isSSLValidate
+	* @param @return    设定文件
+	* @return HttpClient    返回类型
+	* @auther shipan
+	* @throws
+	 */
+	public HttpClient createHttpClient(boolean isSSLValidate){
+		HttpClient httpClient = null;
+		if(isSSLValidate){
+			
+		}else{
+			httpClient = new DefaultHttpClient();
+		}
+		return httpClient;
 	}
 
 }
