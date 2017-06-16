@@ -23,13 +23,13 @@ public class HttpClientUtils {
 	/**
 	 * @throws URISyntaxException 
 	 * 
-	* @Title: createHttpClient
-	* @Description: TODO(创建httpclient)
-	* @param @param httpRequestModel
-	* @param @return    设定文件
-	* @return HttpRequestBase    返回类型
-	* @auther shipan
-	* @throws
+	 * @Title: createHttpClient
+	 * @Description: TODO(创建httpclient)
+	 * @param @param httpRequestModel
+	 * @param @return    设定文件
+	 * @return HttpRequestBase    返回类型
+	 * @auther shipan
+	 * @throws
 	 */
 	public HttpRequestBase createHttpClient(HttpRequestModel httpRequestModel){
 		HttpRequestBase requestbase = null;
