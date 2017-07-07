@@ -15,7 +15,9 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.Lpan.SaopTest.payCenter.model.HttpRequestModel;
@@ -83,12 +85,14 @@ public class HttpClientUtils {
 	 */
 	public HttpClient createHttpClient(boolean isSSLValidate){
 		HttpClient httpClient = null;
+		HttpClient closeableHttpClient = null;
 		if(isSSLValidate){
 			
 		}else{
-			httpClient = new DefaultHttpClient();
+			closeableHttpClient = HttpClients.createDefault();
+			//httpClient = new DefaultHttpClient();
 		}
-		return httpClient;
+		return closeableHttpClient;
 	}
 
 }
